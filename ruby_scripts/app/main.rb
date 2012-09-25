@@ -14,7 +14,9 @@ op.parse(ARGV)
 
 if op.parsed_opts["-a"] != nil || op.parsed_opts["-o"] != nil
   if op.parsed_opts["-o"]
-    exec("./Game.exe console -o " + op.arguments[0].to_s)
+    unless system("./Game.exe console -o " + op.arguments[0].to_s)
+      raise "The exception occurred during the execution of Game.exe" 
+    end
   end
   if op.parsed_opts["-a"]
     puts "[Conkool] Data conversion to the binary from the ascii."
@@ -36,7 +38,9 @@ elsif op.parsed_opts["-b"] != nil || op.parsed_opts["-i"] != nil
     puts "[Conkool] Done."
   end
   if op.parsed_opts["-i"]
-    exec("./Game.exe console -i " + op.arguments[0].to_s)
+    unless system("./Game.exe console -i " + op.arguments[0].to_s)
+      raise "The exception occurred during the execution of Game.exe" 
+    end
   end
 end
 puts "[Conkool] End Conkool."

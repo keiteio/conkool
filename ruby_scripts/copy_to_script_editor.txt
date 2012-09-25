@@ -1,0 +1,18 @@
+Kernel::TOPLEVEL_BINDING = binding
+module Conkool
+  def Conkool.load(filename)
+    open(filename, "rb") do |f|
+      script = f.read
+      eval(script, Kernel::TOPLEVEL_BINDING)
+    end
+  rescue => e
+    puts "[Conkool] The exception has occurred when loading '" + filename + ".'"
+    raise e
+  end
+end
+begin 
+  Conkool.load("./ruby_scripts/rgss/main.rb")
+rescue=>e
+  puts e.backtrace
+  raise e
+end

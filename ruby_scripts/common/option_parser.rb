@@ -48,9 +48,9 @@ module Conkool
         if other.class == String
           return self.short == other || self.long == other
         else
-          return @short == other.short ||
-                 @long == other.long ||
-                 @value_count == other.value_count ||
+          return @short == other.short &&
+                 @long == other.long &&
+                 @value_count == other.value_count &&
                  @duplicate == other.duplicate
         end
       end

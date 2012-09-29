@@ -1,0 +1,16 @@
+namespace :test do
+  desc "do all unit tests."
+  task :unit do
+    require 'find'
+    Find.find("./test/unit") do |f|
+      if File.file?(f)
+        puts 'Run test in "' + f + '"'
+        puts ""
+        system("ruby " + f)
+        puts ""
+        puts "-------------"
+        puts ""
+      end
+    end
+  end
+end
